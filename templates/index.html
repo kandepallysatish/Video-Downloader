@@ -1,0 +1,59 @@
+<!doctype html>
+{% extends 'base.html' %}
+
+{% block title %} Ecommerce {% endblock title %}
+
+{% block body %}
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+</style>
+</head>
+<div class="container">
+  {% for v in post %}
+    <div class="row mt-4">
+        <div class="col-md-8 blog-main">
+            <h3 class="font-italic">
+                {{v.title}}
+            </h3>
+
+            <div class="blog-post">
+                <h2 class="blog-post-title">{{v.head}}</h2>
+                <p class="blog-post-meta">{{v.pub_date}} by <a href="#">Satish</a></p>
+
+                <p>{{v.desc}}</p>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+                    <video  width="400" height="240" controls >
+                        <source src = "/media/{{v.video}}" type="video/mp4">
+
+                    </video>
+            </div>
+            <a href="/media/{{v.video}}" download class="class my-4 mx-3">
+                <button class="btn"><i class="fa fa-download"></i> Download</button>
+            </a>
+        </div>
+    </div>
+  {% endfor %}
+</div>
+</html>
+{% endblock %}
